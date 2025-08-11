@@ -26,11 +26,12 @@ export default function TimeOffRequestForm({onFormSubmit}: Props) {
                 <IonList>
                     <IonItem>
                         <IonLabel position="stacked">Start Date</IonLabel>
-                        <IonInput required type='date' value={startDate}  onIonChange={e => setStartDate(e.target.value as string)} />
+                        <IonInput required type='date' min={new Date().toISOString().split('T')[0]} value={startDate}  onIonChange={e => setStartDate(e.target.value as string)}/>
                     </IonItem>
                     <IonItem>
                         <IonLabel position="stacked">End Date</IonLabel>
-                        <IonInput required type='date' value={endDate} onIonChange={e => setEndDate(e.target.value as string)} />
+                        <IonInput required type='date' min={startDate || new Date().toISOString().split('T')[0]} value={endDate} onIonChange={e => setEndDate(e.target.value as string)} />
+                        {/* {error && <div style={{ color: 'red' }}>{error}</div>} */}
                     </IonItem>
                     <IonItem>
                         <IonLabel position="stacked">Type</IonLabel>
